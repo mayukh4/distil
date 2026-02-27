@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+._*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Chrome Extension packaging
+*.pem
+*.crx
+*.zip
+
+# Claude Code
+.claude/

@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Distil",
+  "version": "2.0",
+  "description": "Minimal new tab for focused minds. Research papers, news, notes.",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications"
+  ],
+  "icons": {
+    "128": "icon.png"
+  },
+  "host_permissions": [
+    "https://api.openweathermap.org/*",
+    "https://export.arxiv.org/*",
+    "https://news.google.com/*",
+    "https://hacker-news.firebaseio.com/*",
+    "https://apod.nasa.gov/*",
+    "https://api.nasa.gov/*"
+  ]
+}
