@@ -1,0 +1,8 @@
+SCREENSHOT 5: Settings Popup + APOD Background — 1280x800 PNG/JPG
+
+Attach: Real screenshot of the settings popup open, and optionally a screenshot with APOD background enabled.
+
+Prompt:
+---
+Using the attached screenshots as strict visual references, generate a promotional screenshot at exactly 1280 by 800 pixels showing two things simultaneously: the Distil new tab page with a colorful NASA APOD space photograph as the background (a vibrant nebula or galaxy, not the default M87 image), and the Distil settings popup overlaid in the upper-right area. The new tab shows the usual dashboard — clock, greeting, weather, quick links, and the Papers feed — all rendered with glassmorphism frosted panels over the vivid space background. The settings popup is a narrow dark panel (about 380 pixels wide) with "DISTIL" in orange uppercase at the top and "Settings" in gray. Visible sections include: "PROFILE" with a name input, "QUICK LINKS" with favicon entries and drag handles, "ARXIV CATEGORIES" with collapsible group headers and chip/tag selectors (some highlighted in orange), "NEWS TOPICS" with a row of topic chips, "WEATHER" with API key and city inputs plus a C/F toggle, and "BACKGROUND" with an APOD toggle switch. The popup uses a solid dark background (#0a0a0a) with orange accent for active elements. All text in JetBrains Mono monospace. Match the layout and styling from the attached references.
+---

@@ -1,0 +1,8 @@
+MARQUEE PROMO TILE — 1400x560 PNG/JPG
+
+Attach: A full screenshot of the dashboard and the icon.
+
+Prompt:
+---
+Using the attached screenshots as visual references, generate a wide cinematic promotional banner at exactly 1400 by 560 pixels for the Distil Chrome extension. The composition splits into two zones. The left third is the branding area: the Distil icon (an orange #ff4d00 ring, about 80 pixels) with "Distil" in white JetBrains Mono medium font at about 48 pixels to its right, and below it the tagline "Minimal new tab for focused minds" in smaller muted white text with wide letter-spacing. The right two-thirds shows a slightly perspective-angled browser window mockup displaying the Distil dashboard — the clock, greeting, weather widget, quick links, and Papers feed panel visible inside the browser frame. The mockup floats over the background with a subtle drop shadow. The entire banner background is deep dark space — the M87 black hole image heavily darkened and softly blurred, creating a gradient from near-black on the left behind the text to slightly more visible on the right behind the mockup. A very subtle orange glow radiates from behind the icon. The mood is dark, sophisticated, and premium — like a hero section for a developer tool. No bright colors besides the orange accent. Clean composition with generous spacing between elements.
+---

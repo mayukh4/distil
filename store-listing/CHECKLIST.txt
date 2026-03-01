@@ -1,0 +1,57 @@
+DISTIL — CHROME WEB STORE LISTING CHECKLIST
+
+Category: Productivity
+Language: English
+
+=== STORE LISTING FIELDS ===
+
+[ ] Description (up to 16,000 chars)
+    File: description.txt
+    Copy-paste into the "Detailed description" field
+
+[ ] Single Purpose Description (required for new tab override)
+    File: single-purpose-description.txt
+    Copy-paste into the "Single purpose" field
+
+[ ] Privacy Practices
+    File: privacy-practices.txt
+    Use when filling out the privacy disclosure form
+
+=== GRAPHIC ASSETS ===
+
+| #  | Asset                          | Dimensions | Format  | Prompt File                              | Status |
+|----|--------------------------------|------------|---------|------------------------------------------|--------|
+| 1  | Store Icon                     | 128x128    | PNG     | prompts/01-store-icon-128x128.txt        | [ ]    |
+| 2  | Screenshot: Papers Tab         | 1280x800   | PNG/JPG | prompts/02-screenshot-papers-tab.txt     | [ ]    |
+| 3  | Screenshot: News Tab           | 1280x800   | PNG/JPG | prompts/03-screenshot-news-tab.txt       | [ ]    |
+| 4  | Screenshot: HN + Notes         | 1280x800   | PNG/JPG | prompts/04-screenshot-hn-notes.txt       | [ ]    |
+| 5  | Screenshot: Zen Mode           | 1280x800   | PNG/JPG | prompts/05-screenshot-zen-mode.txt       | [ ]    |
+| 6  | Screenshot: Settings + APOD    | 1280x800   | PNG/JPG | prompts/06-screenshot-settings-apod.txt  | [ ]    |
+| 7  | Small Promo Tile               | 440x280    | PNG/JPG | prompts/07-small-promo-tile.txt          | [ ]    |
+| 8  | Marquee Promo Tile             | 1400x560   | PNG/JPG | prompts/08-marquee-promo-tile.txt        | [ ]    |
+
+=== WORKFLOW ===
+
+For each graphic asset:
+1. Take a real screenshot of the relevant Distil feature
+   (Use Chrome DevTools device mode for exact 1280x800 viewport)
+2. Open Gemini (gemini.google.com) — uses Nano Banana 2 by default
+3. Upload the real screenshot(s) as reference using the + button
+4. Paste the text prompt from the corresponding prompt file
+5. If refinement needed, upload the generated image back and ask for edits
+6. Verify exact pixel dimensions before uploading to Chrome Web Store
+7. Save final assets into store-listing/assets/ directory
+
+=== TIPS ===
+
+- For the icon: existing icon.png may already work — resize/clean up if needed
+- For screenshots: if AI-generated versions have font/layout issues, use actual
+  browser screenshots instead (1280x800 viewport via DevTools)
+- Chrome Web Store rejects assets that don't match exact pixel requirements
+- Always attach real screenshots as reference when using image generation
+
+=== SUBMISSION ===
+
+Chrome Web Store Developer Dashboard: https://chrome.google.com/webstore/devconsole
+Chrome Web Store Images Guide: https://developer.chrome.com/docs/webstore/images
+Chrome Web Store Listing Guide: https://developer.chrome.com/docs/webstore/best-listing

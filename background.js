@@ -23,7 +23,7 @@ const NASA_API_KEY = 'wxo1oIGfOwD8dTAYb7FmJGnLSdzTFiQ5Qe8wmegA';
 const NASA_API_URL = 'https://api.nasa.gov/planetary/apod';
 const APOD_WEBSITE = 'https://apod.nasa.gov/apod/astropix.html';
 // Cache version - increment this to force cache clear on extension update
-const APOD_CACHE_VERSION = 5;
+const APOD_CACHE_VERSION = 6;
 // Retry configuration
 const APOD_MAX_RETRIES = 3;
 const APOD_RETRY_DELAYS = [2000, 5000, 10000]; // ms
@@ -294,6 +294,30 @@ function getLocalToday() {
 }
 
 /**
+ * Extract a thumbnail URL from a video embed URL (YouTube, Vimeo)
+ */
+function extractVideoThumbnail(videoUrl) {
+    if (!videoUrl) return null;
+
+    // YouTube: youtube.com/embed/VIDEO_ID, youtube.com/watch?v=VIDEO_ID, youtu.be/VIDEO_ID
+    const ytMatch = videoUrl.match(
+        /(?:youtube\.com\/(?:embed|v)\/|youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+    );
+    if (ytMatch) {
+        return `https://img.youtube.com/vi/${ytMatch[1]}/maxresdefault.jpg`;
+    }
+
+    // Vimeo: player.vimeo.com/video/VIDEO_ID or vimeo.com/VIDEO_ID
+    const vimeoMatch = videoUrl.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    if (vimeoMatch) {
+        // Vimeo thumbnails require an API call, but we can use their oEmbed
+        return `https://vumbnail.com/${vimeoMatch[1]}.jpg`;
+    }
+
+    return null;
+}
+
+/**
  * Fetch APOD from NASA API with timeout
  */
 async function fetchApodFromApi(date = null) {
@@ -327,9 +351,17 @@ async function fetchApodFromApi(date = null) {
             if (data.thumbnail_url) {
                 imageUrl = data.thumbnail_url;
                 mediaType = 'image';
-                console.log('[BG] Using video thumbnail:', imageUrl);
+                console.log('[BG] Using API video thumbnail:', imageUrl);
             } else {
-                throw new Error('VIDEO_NO_THUMBNAIL');
+                // Try to extract thumbnail from the video URL itself
+                const extractedThumb = extractVideoThumbnail(data.url);
+                if (extractedThumb) {
+                    imageUrl = extractedThumb;
+                    mediaType = 'image';
+                    console.log('[BG] Using extracted video thumbnail:', imageUrl);
+                } else {
+                    throw new Error('VIDEO_NO_THUMBNAIL');
+                }
             }
         }
 
@@ -370,13 +402,25 @@ async function scrapeApodFromWebsite() {
         const html = await response.text();
 
         // Extract image URL: <a href="image/YYMM/filename.jpg"><img src="...">
+        let imageUrl;
         const imageMatch = html.match(/<a href="(image\/\d+\/[^"]+\.(jpg|jpeg|png|gif))"[^>]*><img/i);
-        if (!imageMatch) {
-            throw new Error('Could not find image on APOD website');
+        if (imageMatch) {
+            imageUrl = `https://apod.nasa.gov/apod/${imageMatch[1]}`;
+        } else {
+            // Video day — try to extract thumbnail from iframe embed
+            console.log('[BG] No image found on APOD page, checking for video embed...');
+            const iframeMatch = html.match(/<iframe[^>]+src="([^"]+)"/i);
+            if (iframeMatch) {
+                const thumbUrl = extractVideoThumbnail(iframeMatch[1]);
+                if (thumbUrl) {
+                    imageUrl = thumbUrl;
+                    console.log('[BG] Extracted video thumbnail from page:', imageUrl);
+                }
+            }
+            if (!imageUrl) {
+                throw new Error('Could not find image or video thumbnail on APOD website');
+            }
         }
-
-        const relativeUrl = imageMatch[1];
-        const imageUrl = `https://apod.nasa.gov/apod/${relativeUrl}`;
 
         // Extract title: <b> Title </b>
         const titleMatch = html.match(/<b>\s*([^<]+?)\s*<\/b>/);
@@ -433,9 +477,15 @@ async function fetchApodWithFallback() {
             lastError = error;
             console.warn(`[BG] APOD API attempt ${attempt + 1}/${APOD_MAX_RETRIES} failed:`, error.message);
 
-            // If video without thumbnail, try yesterday's APOD
+            // If video without thumbnail, try scraping the page, then yesterday
             if (error.message === 'VIDEO_NO_THUMBNAIL') {
-                console.log('[BG] Video without thumbnail, trying yesterday...');
+                console.log('[BG] Video without extractable thumbnail, trying website scrape...');
+                try {
+                    return await scrapeApodFromWebsite();
+                } catch (scrapeError) {
+                    console.warn('[BG] Website scrape failed for video day:', scrapeError.message);
+                }
+                console.log('[BG] Falling back to yesterday...');
                 try {
                     const yesterday = new Date();
                     yesterday.setDate(yesterday.getDate() - 1);

@@ -1,0 +1,20 @@
+PRIVACY PRACTICES DISCLOSURE
+
+Data Storage:
+- All data stored locally via chrome.storage.local
+- No personal data collected, transmitted, or shared
+
+External API Calls:
+- OpenWeatherMap (user-provided API key) — weather data
+- arXiv.org — research paper listings
+- Google News RSS — news headlines
+- Hacker News API (hacker-news.firebaseio.com) — top stories
+- NASA APOD API (api.nasa.gov / apod.nasa.gov) — astronomy background image
+
+Not Used:
+- No user accounts
+- No analytics or telemetry
+- No cookies
+- No third-party tracking
+- No data sharing with third parties
+- No advertising

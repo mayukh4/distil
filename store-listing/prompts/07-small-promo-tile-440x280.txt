@@ -1,0 +1,8 @@
+SMALL PROMO TILE — 440x280 PNG/JPG
+
+Attach: A screenshot of the main dashboard and the icon.
+
+Prompt:
+---
+Using the attached screenshots as visual references, generate a promotional graphic at exactly 440 by 280 pixels for the Distil Chrome extension. Dark, premium composition. The M87 black hole photograph is used as a subtle, heavily darkened background. On the left side, the Distil icon — a vibrant orange (#ff4d00) ring — at about 60 pixels diameter. To the right of the icon, the word "Distil" in white JetBrains Mono medium-weight font, approximately 28 pixels tall. Below the name, the tagline "Minimal new tab for focused minds" in smaller muted white text (about 70% opacity). The bottom third of the tile shows a subtle, cropped preview of the dashboard interface — just the clock area and weather widget as a faint frosted glass overlay on the dark background. No bright colors except the orange ring and accent. Clean, minimal, understated. The design should read clearly even when shrunk to half size.
+---

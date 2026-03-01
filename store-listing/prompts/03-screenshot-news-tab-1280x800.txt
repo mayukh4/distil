@@ -1,0 +1,8 @@
+SCREENSHOT 2: Google News Feed — 1280x800 PNG/JPG
+
+Attach: Real screenshot of the new tab page with the News tab active.
+
+Prompt:
+---
+Using the attached screenshot as a strict visual reference, generate a promotional screenshot at exactly 1280 by 800 pixels showing the Distil new tab extension with the Google News feed active. Same overall layout as the reference: dark M87 black hole background, centered clock with personalized greeting and date at top, weather widget pill, quick links row. The main glassmorphism content panel has three tabs — "PAPERS," "NEWS," "HN" — with NEWS highlighted in orange with an orange underline. The panel shows a scrollable list of news headlines in white monospace text. Each article has an orange category tag like "TECHNOLOGY" or "SCIENCE," a source name in gray like "Reuters" or "The Verge," and a publication date. The frosted glass panel has a dark translucent background with subtle blur and thin border. Dark theme throughout with white text and orange (#ff4d00) accents. Match the visual style, typography, spacing, and glassmorphism effects from the attached reference exactly.
+---

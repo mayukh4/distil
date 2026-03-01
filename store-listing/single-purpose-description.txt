@@ -1,0 +1,1 @@
+Replaces the new tab page with a productivity dashboard showing time, weather, research papers, news, notes, and a Pomodoro timer.

@@ -135,7 +135,7 @@ setInterval(() => {
 const PAPERS_CACHE_DURATION = 6 * 60 * 60 * 1000;   // 6 hours
 const NEWS_CACHE_DURATION = 12 * 60 * 60 * 1000;     // 12 hours
 const HN_CACHE_DURATION = 1 * 60 * 60 * 1000;        // 1 hour
-const APOD_CACHE_VERSION = 5;
+const APOD_CACHE_VERSION = 6;
 const NEWS_CACHE_VERSION = 4; // Bumped for new feed system
 
 let currentNewsTab = 'papers';

@@ -1,0 +1,8 @@
+SCREENSHOT 3: Hacker News + Notes Side by Side — 1280x800 PNG/JPG
+
+Attach: Real screenshot showing the two-column layout with Notes expanded and HN tab active.
+
+Prompt:
+---
+Using the attached screenshot as a strict visual reference, generate a promotional screenshot at exactly 1280 by 800 pixels showing the Distil new tab page with both the Notes panel and Hacker News feed visible in a two-column grid layout. On the left: a frosted glass Notes panel with "NOTES" header in uppercase gray text and a small download icon, containing a dark textarea with sample monospace text like code snippets or TODO items in white. On the right: the news panel with the "HN" tab active and highlighted in orange, listing Hacker News stories with titles in white, orange point scores like "342 pts," gray comment counts like "127 comments," and author names. Above both panels: the clock, personalized greeting, date, weather widget, and quick links row. Background is the dark M87 space image. All panels use glassmorphism — translucent dark backgrounds with backdrop blur and thin borders. Accent color is vibrant orange #ff4d00. Match the attached reference for exact layout, fonts, and visual style.
+---

@@ -1,0 +1,8 @@
+SCREENSHOT 1: Main Dashboard with Papers Tab — 1280x800 PNG/JPG
+
+Attach: Real screenshot of the new tab page with the Papers tab active.
+
+Prompt:
+---
+Using the attached screenshot of the Distil Chrome extension as a strict visual reference, generate a polished promotional screenshot at exactly 1280 by 800 pixels. Faithfully reproduce the layout shown in the reference: a browser new tab page with a dramatic dark M87 black hole photograph as the background — a glowing orange ring surrounding a dark void in deep space. The Distil interface is overlaid on this background. At the top center, a large thin-weight clock in white monospace text (JetBrains Mono font), with a contextual greeting like "GOOD AFTERNOON, ALEX" above it in small uppercase tracked letters, and the full date below. A frosted glass weather widget shows temperature with a weather icon and city name. Below that, a row of small circular favicon quick link buttons. The main content area has a frosted glass panel with three tab buttons — "PAPERS," "NEWS," and "HN" — with PAPERS active and highlighted in vibrant orange (#ff4d00). The panel lists arXiv paper titles in white text with orange category tags like "cs.AI" and "cs.LG," author names in muted gray, and publication dates. All panels use glassmorphism styling: translucent dark backgrounds with backdrop blur and thin white-opacity borders. Match the exact layout, spacing, fonts, and colors from the attached reference.
+---

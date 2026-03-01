@@ -1,0 +1,8 @@
+SCREENSHOT 4: Zen Mode — 1280x800 PNG/JPG
+
+Attach: Real screenshot of Zen mode active.
+
+Prompt:
+---
+Using the attached screenshot as a strict visual reference, generate a promotional screenshot at exactly 1280 by 800 pixels showing the Distil extension in Zen mode. The entire screen is the M87 black hole background — the dramatic glowing orange accretion ring surrounding a dark void against deep black space. The only visible UI element is a large centered clock in thin white monospace text (JetBrains Mono) reading something like "11:23 PM," with a small greeting "GOOD EVENING" above it in muted uppercase tracked letters, and the full date "FRIDAY, FEBRUARY 28, 2026" below in smaller uppercase white text. No panels, no weather widget, no news feed, no notes, no buttons — everything has faded away. The composition should feel serene, cinematic, and focused — like time floating against the cosmos. Very high contrast between bright white text and the dark space background. Match the attached reference exactly.
+---

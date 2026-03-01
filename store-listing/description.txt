@@ -1,0 +1,70 @@
+Distil replaces your new tab page with a clean, distraction-free productivity dashboard. Every time you open a new tab, you see the time, a personalized greeting, live weather, and a curated feed of arXiv research papers, Google News headlines, or Hacker News top stories — all rendered in a sleek glassmorphism interface with monospace typography over a dark space background.
+
+Built for researchers, developers, and anyone who wants their browser to work harder for them.
+
+
+WHAT YOU GET
+
+Time, Date & Personalized Greeting
+A large, elegant clock with a contextual greeting that changes based on time of day — "Good Morning," "Good Afternoon," or "Good Evening" — personalized with your name.
+
+Live Weather
+Current temperature, conditions, and a minimalist weather icon. Powered by OpenWeatherMap with support for Celsius and Fahrenheit. Updates automatically every 30 minutes. Enter any city worldwide.
+
+Pomodoro Focus Timer
+A built-in 25-minute focus / 5-minute break Pomodoro timer with an animated circular progress ring. Start, pause, and reset directly from the new tab page. Notifications alert you when a session ends. The timer persists across tab opens and browser restarts — it keeps running even when you close the tab.
+
+Persistent Notes
+A quick-access notepad that auto-saves as you type. Expand or collapse it with one click. Export your notes as a .txt file at any time. Perfect for capturing ideas, links, code snippets, and to-dos without leaving your browser.
+
+arXiv Research Papers Feed
+Browse the latest papers from arXiv.org across 44 categories spanning Physics, Computer Science, Mathematics, Quantitative Biology, Statistics, Economics, and Electrical Engineering. Select only the categories you care about — from Machine Learning and AI to Cosmology and Algebraic Geometry. Papers display titles, authors, dates, and category tags with direct links to arXiv.
+
+Google News Headlines
+Stay current with headlines from Google News across 8 topics: Technology, Science, Business, Health, World, Nation, Entertainment, and Sports. Select your preferred topics in settings. Each article shows the source outlet, publication date, and topic tag.
+
+Hacker News Top Stories
+The top stories from Hacker News with point scores, comment counts, author names, and direct links to both the article and the HN discussion thread.
+
+Quick Links
+Add up to 8 custom shortcut bookmarks displayed as favicon circles below the clock. Drag to reorder. One click opens your most-used sites — GitHub, Gmail, Notion, Slack, or anywhere else.
+
+NASA Astronomy Picture of the Day
+Toggle a stunning daily space photograph from NASA's APOD service as your new tab background. Includes an info overlay with the image title, explanation, and date. Uses a resilient multi-tier fetch pipeline with automatic fallbacks.
+
+Zen Mode
+Press the Z key to enter Zen mode. Everything fades away except a large centered clock and date — no panels, no widgets, no distractions. Press Z or Escape to return. Your new tab becomes a calm, focused space.
+
+Settings Panel
+Click the Distil icon in your toolbar to configure everything: your name, quick links, arXiv categories, news topics, weather city and units, API key, and APOD background. Every change takes effect instantly without reloading.
+
+
+DESIGN
+
+Glassmorphism design system — frosted glass panels with translucent backgrounds and subtle borders layered over a dark backdrop. The default background is a photograph of the M87 black hole, replaceable with NASA's daily astronomy image.
+
+JetBrains Mono typography throughout. Vibrant orange accent color for active states, tags, and highlights. Fully dark-themed interface with smooth animations.
+
+
+PRIVACY
+
+Your data stays local. Notes, settings, and cached feeds are stored on your machine using Chrome's built-in storage. Distil does not collect, transmit, or share any personal data. No accounts. No ads. No tracking. No analytics.
+
+
+WEATHER SETUP
+
+Weather requires a free OpenWeatherMap API key:
+1. Sign up at openweathermap.org (free tier)
+2. Copy your API key
+3. Paste it into Distil settings under Weather
+4. Enter your city name
+
+
+WHO IS DISTIL FOR?
+
+- Researchers who want arXiv papers in their new tab
+- Developers who follow Hacker News daily
+- Students tracking multiple academic fields
+- Professionals who want weather, news, and notes in one place
+- Anyone tired of the default Chrome new tab page
+- Fans of clean, dark, minimalist interfaces

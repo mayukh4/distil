@@ -1,0 +1,10 @@
+STORE ICON — 128x128 PNG
+
+Attach: The current icon.png from the extension as reference.
+
+Prompt:
+---
+Using the attached image as a reference, generate a 128 by 128 pixel app icon for a Chrome extension called "Distil." The design is a single perfect circle drawn as a thick stroke ring in vibrant orange (#ff4d00), approximately 96 pixels in diameter, centered on a solid black (#000000) square background with 16 pixels of transparent padding on all sides. The ring has a clean, uniform stroke width of about 8 pixels. No fill inside the circle — just the orange ring against pure black. The style should look like a precision-drawn vector graphic with sharp anti-aliased edges. No gradients, no textures, no shadows, no 3D effects. Stark, confident, immediately recognizable at small sizes. Output as a square PNG.
+---
+
+Tip: Consider just using the existing icon.png resized/cleaned up, since it already matches the design language perfectly.
