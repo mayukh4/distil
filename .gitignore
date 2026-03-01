@@ -16,3 +16,6 @@
 
 # Claude Code
 .claude/
+
+# Store Listing
+/store-listing
