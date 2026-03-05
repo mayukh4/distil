@@ -1,5 +1,7 @@
 # Distil
 
+<img width="1600" height="900" alt="distil" src="https://github.com/user-attachments/assets/7b1999ed-6c0d-4489-8355-71493891eccb" />
+
 A minimalist Chrome extension that replaces your new tab with a productivity dashboard. No frameworks, no build tools — pure vanilla JS/HTML/CSS.
 
 ## Features
