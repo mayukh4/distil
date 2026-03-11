@@ -9,6 +9,7 @@ const DEFAULT_SETTINGS = {
     city: '',
     userName: '',
     weatherApiKey: '',
+    nasaApiKey: '',
     quickLinks: [],
     apodEnabled: false,
     zenMode: false,
@@ -19,7 +20,6 @@ const DEFAULT_SETTINGS = {
 const ARXIV_API = 'https://export.arxiv.org/api/query';
 
 // NASA APOD Configuration
-const NASA_API_KEY = 'wxo1oIGfOwD8dTAYb7FmJGnLSdzTFiQ5Qe8wmegA';
 const NASA_API_URL = 'https://api.nasa.gov/planetary/apod';
 const APOD_WEBSITE = 'https://apod.nasa.gov/apod/astropix.html';
 // Cache version - increment this to force cache clear on extension update
@@ -323,11 +323,17 @@ function extractVideoThumbnail(videoUrl) {
 async function fetchApodFromApi(date = null) {
     console.log('[BG] Fetching NASA APOD via API...', date ? `(date: ${date})` : '(today)');
 
+    // Read user-provided NASA API key from storage
+    const { nasaApiKey } = await chrome.storage.local.get('nasaApiKey');
+    if (!nasaApiKey) {
+        throw new Error('NO_API_KEY');
+    }
+
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 15000);
 
     try {
-        let url = `${NASA_API_URL}?api_key=${NASA_API_KEY}&thumbs=true`;
+        let url = `${NASA_API_URL}?api_key=${encodeURIComponent(nasaApiKey)}&thumbs=true`;
         if (date) {
             url += `&date=${date}`;
         }
@@ -477,6 +483,11 @@ async function fetchApodWithFallback() {
             lastError = error;
             console.warn(`[BG] APOD API attempt ${attempt + 1}/${APOD_MAX_RETRIES} failed:`, error.message);
 
+            // If no API key configured, skip retries entirely
+            if (error.message === 'NO_API_KEY') {
+                throw new Error('No NASA API key configured. Add your key in extension settings.');
+            }
+
             // If video without thumbnail, try scraping the page, then yesterday
             if (error.message === 'VIDEO_NO_THUMBNAIL') {
                 console.log('[BG] Video without extractable thumbnail, trying website scrape...');
@@ -545,6 +556,13 @@ async function forceRefreshApod() {
  * Check cache and fetch if needed (called by alarm and on startup)
  */
 async function fetchAndCacheApod() {
+    // Skip if no API key is configured
+    const { nasaApiKey } = await chrome.storage.local.get('nasaApiKey');
+    if (!nasaApiKey) {
+        console.log('[BG] No NASA API key configured, skipping APOD fetch');
+        return;
+    }
+
     const today = getLocalToday();
 
     // Check cached data

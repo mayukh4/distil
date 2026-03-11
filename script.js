@@ -168,10 +168,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // APOD toggle button state
     const apodToggleBtn = document.getElementById('apod-toggle-btn');
+    const { nasaApiKey } = await chrome.storage.local.get('nasaApiKey');
     if (apodEnabled) {
         apodToggleBtn.classList.add('active');
         apodToggleBtn.title = 'Toggle NASA APOD Background (Currently On)';
-        loadApod();
+        if (nasaApiKey) {
+            loadApod();
+        } else {
+            showApodKeyPrompt();
+        }
     } else {
         apodToggleBtn.title = 'Toggle NASA APOD Background (Currently Off)';
     }
@@ -395,13 +400,34 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
         if (changes.apodEnabled.newValue) {
             apodToggleBtn.classList.add('active');
             apodToggleBtn.title = 'Toggle NASA APOD Background (Currently On)';
-            loadApod();
+            chrome.storage.local.get('nasaApiKey', (result) => {
+                if (result.nasaApiKey) {
+                    loadApod();
+                } else {
+                    showApodKeyPrompt();
+                }
+            });
         } else {
             apodToggleBtn.classList.remove('active');
             apodToggleBtn.title = 'Toggle NASA APOD Background (Currently Off)';
             document.body.style.removeProperty('--bg-image');
             document.getElementById('apod-info').classList.add('hidden');
         }
+    }
+
+    // NASA API key changed — refresh APOD if enabled
+    if (changes.nasaApiKey) {
+        chrome.storage.local.get('apodEnabled', (result) => {
+            if (result.apodEnabled) {
+                if (changes.nasaApiKey.newValue) {
+                    document.getElementById('apod-info').classList.add('hidden');
+                    forceRefreshApod();
+                } else {
+                    document.body.style.removeProperty('--bg-image');
+                    showApodKeyPrompt();
+                }
+            }
+        });
     }
 
     // Zen mode changed from popup
@@ -619,6 +645,14 @@ function preloadImage(url) {
         img.onerror = () => reject(new Error('Image load failed'));
         img.src = url;
     });
+}
+
+function showApodKeyPrompt() {
+    const infoBox = document.getElementById('apod-info');
+    document.getElementById('apod-title').textContent = 'NASA API Key Required';
+    document.getElementById('apod-explanation').textContent = 'Add your free NASA API key in the extension settings (click the Distil icon) to enable APOD backgrounds.';
+    document.getElementById('apod-date').textContent = '';
+    infoBox.classList.remove('hidden');
 }
 
 // APOD Explanation Toggle

@@ -91,6 +91,7 @@ const DEFAULT_SETTINGS = {
     city: '',
     userName: '',
     weatherApiKey: '',
+    nasaApiKey: '',
     quickLinks: [],
     apodEnabled: false,
     zenMode: false,

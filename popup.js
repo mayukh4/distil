@@ -202,6 +202,8 @@ function loadWeatherSettings() {
 // APOD TOGGLE
 // ============================================================================
 
+let nasaKeyTimeout;
+
 function loadApodToggle() {
     const toggle = document.getElementById('apod-toggle');
     if (currentSettings.apodEnabled) {
@@ -211,6 +213,24 @@ function loadApodToggle() {
     toggle.addEventListener('click', () => {
         toggle.classList.toggle('active');
         chrome.storage.local.set({ apodEnabled: toggle.classList.contains('active') });
+    });
+
+    // NASA API key
+    const nasaKeyInput = document.getElementById('popup-nasa-key');
+    nasaKeyInput.value = currentSettings.nasaApiKey || '';
+
+    nasaKeyInput.addEventListener('input', () => {
+        clearTimeout(nasaKeyTimeout);
+        nasaKeyTimeout = setTimeout(() => {
+            chrome.storage.local.set({ nasaApiKey: nasaKeyInput.value.trim() });
+        }, 800);
+    });
+
+    nasaKeyInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            clearTimeout(nasaKeyTimeout);
+            chrome.storage.local.set({ nasaApiKey: nasaKeyInput.value.trim() });
+        }
     });
 }
 
