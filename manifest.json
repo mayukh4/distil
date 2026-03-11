@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Distil",
-  "version": "2.0",
+  "version": "2.1",
   "description": "Minimal new tab for focused minds. Research papers, news, notes.",
   "chrome_url_overrides": {
     "newtab": "newtab.html"
