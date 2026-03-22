@@ -1,3 +1,26 @@
+// Retry wrapper for chrome.runtime.sendMessage — handles MV3 service worker wake-up failures
+function sendMessageWithRetry(message, maxRetries = 3) {
+    return new Promise((resolve, reject) => {
+        let attempt = 0;
+        function trySend() {
+            attempt++;
+            chrome.runtime.sendMessage(message, (response) => {
+                if (chrome.runtime.lastError) {
+                    console.warn(`sendMessage attempt ${attempt}/${maxRetries} failed:`, chrome.runtime.lastError.message);
+                    if (attempt < maxRetries) {
+                        setTimeout(trySend, 500 * attempt);
+                    } else {
+                        reject(new Error(chrome.runtime.lastError.message));
+                    }
+                } else {
+                    resolve(response);
+                }
+            });
+        }
+        trySend();
+    });
+}
+
 // Cached user name (avoids reading storage every second)
 let cachedUserName = '';
 
@@ -290,12 +313,12 @@ async function loadNews(source, forceRefresh = false) {
 
         if (source === 'papers') {
             const categories = settings.arxivCategories || DEFAULT_SETTINGS.arxivCategories;
-            response = await chrome.runtime.sendMessage({ action: 'fetchPapers', categories });
+            response = await sendMessageWithRetry({ action: 'fetchPapers', categories });
         } else if (source === 'news') {
             const topics = settings.newsTopics || DEFAULT_SETTINGS.newsTopics;
-            response = await chrome.runtime.sendMessage({ action: 'fetchGoogleNews', topics });
+            response = await sendMessageWithRetry({ action: 'fetchGoogleNews', topics });
         } else if (source === 'hn') {
-            response = await chrome.runtime.sendMessage({ action: 'fetchHackerNews' });
+            response = await sendMessageWithRetry({ action: 'fetchHackerNews' });
         }
 
         if (!response.success) {
@@ -573,7 +596,7 @@ async function forceRefreshApod() {
     document.getElementById('apod-date').textContent = '';
 
     try {
-        const response = await chrome.runtime.sendMessage({ action: 'forceRefreshApod' });
+        const response = await sendMessageWithRetry({ action: 'forceRefreshApod' });
 
         if (response && response.success && response.data) {
             await displayApod(response.data);
@@ -601,7 +624,7 @@ async function loadApod() {
     }
 
     try {
-        const response = await chrome.runtime.sendMessage({ action: 'fetchApod' });
+        const response = await sendMessageWithRetry({ action: 'fetchApod' });
 
         if (response && response.success && response.data) {
             await chrome.storage.local.set({
